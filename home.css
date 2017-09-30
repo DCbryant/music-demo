@@ -1,0 +1,64 @@
+/* red:#d43c33 */
+
+.page{
+
+}
+
+section.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 17px 10px;
+    background-color: #d43c33;
+}
+
+section.topbar .logo svg{
+    width: 142px;
+    height: 25px;
+    /* 消除inline-block的影响 */
+    vertical-align: top;
+}
+
+section.topbar a{
+    display: inline-block;
+    /* 为了完成理论像素1px */
+    /* border: 1px solid;
+    border-radius: 15px; */
+    font-size: 15px;
+    padding: 5px 11px;
+    color: #fff;
+    /* 高度凑够30px,宽度80px */
+    line-height: 20px;   
+    position: relative;
+}
+
+section.topbar a::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 因为默认display:inline-block */
+    width: 200%;
+    height: 200%;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+
+section.globalTabs{
+
+}
+
+section.playlists{
+
+}
+
+section.songs{
+
+}
+
+/* 其实是广告嘻嘻 */
+section.art{
+
+}
