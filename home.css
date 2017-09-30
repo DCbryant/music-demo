@@ -1,5 +1,9 @@
 /* red:#d43c33 */
 
+body{
+    font-size: 15px;
+}
+
 .page{
 
 }
@@ -24,13 +28,14 @@ section.topbar a{
     /* 为了完成理论像素1px */
     /* border: 1px solid;
     border-radius: 15px; */
-    font-size: 15px;
     padding: 5px 11px;
     color: #fff;
     /* 高度凑够30px,宽度80px */
     line-height: 20px;   
     position: relative;
 }
+
+/* vw，缺点：计算麻烦，优点：随着屏幕自适应 */
 
 section.topbar a::after{
     content: '';
@@ -46,12 +51,95 @@ section.topbar a::after{
     transform-origin: 0 0;
 }
 
-section.globalTabs{
 
+/* tabs */
+
+.tabs{
+    display: flex;
+    border-bottom: 1px solid #ccc;
 }
+
+.tabs > li{
+    width: 33.333333%;
+    text-align: center;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.tabs li.active{
+    color: #d43c33;
+}
+
+/* 让文字与下划线产生联系 */
+.tabs li .text{
+    position: relative;
+    top: 1px;
+    padding: 10px 5px;
+}
+
+.tabs li.active .text{
+}
+
+.tabs li.active .text::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    width: 100%;
+    height: 2px;
+    background-color: #d43c33;
+}
+
+.tab-content > li{
+    display: none;
+}
+
+.tab-content > li.active{
+    display: block;
+}
+
+
+
 
 section.playlists{
 
+}
+
+section.playlists h2{
+    border-left: 2px solid #d43c33;
+    padding-left: 8px;
+    font-size: 17px;
+    /* 让字与横线对齐 */
+    line-height: 1;
+    margin: 20px 0 8px;
+}
+
+section.playlists ol.songs{
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+section.playlists ol.songs li{
+    width: 32.8%;
+    margin: 8px 0;
+}
+
+section.playlists ol.songs li p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+    overflow: hidden;
+    line-height: 18px;
+    height: 36px;
+    padding: 0 6px;
+}
+
+section.playlists ol.songs li img{
+    width: 100%;
 }
 
 section.songs{
@@ -62,3 +150,6 @@ section.songs{
 section.art{
 
 }
+
+
+
