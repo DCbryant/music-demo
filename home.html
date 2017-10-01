@@ -245,6 +245,7 @@
 
     <script src="//at.alicdn.com/t/font_432965_3he0hj5jvjd4e7b9.js"></script>
     <script src="./vendors/jquery.slim.js"></script>
+    <script src="./vendors/av-min.js"></script>
     <script>
         $('.tabs').on('click','li',function(e){
             let $li = $(e.currentTarget)
@@ -253,6 +254,34 @@
             $('.tab-content').children().eq(index)
                 .addClass('active').siblings().removeClass('active')
         })
+    </script>
+    <script>
+        var APP_ID = 'aPEGaeVtKbV9PJXee9cPawCW-gzGzoHsz';
+        var APP_KEY = 'jEvYXuleCCAXVAuV3NRAI9Fc';
+
+        AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+        });
+
+        var SongObject = AV.Object.extend('Song');//选择表名
+        var songObject = new SongObject();//生成一条数据
+        songObject.save({//数据里面的内容
+            singer:'Bailey Baker',
+            name:'Going Strong',
+            url:'http://ox5h6qw45.bkt.clouddn.com/8f13%252F806b%252F73cb%252Fbbfaf86efc05bee274266201e30586aa.mp3'
+        }).then(function(object) {
+            alert('LeanCloud Rocks!');
+        })
+
+        // 批量保存
+        // var SongObject = AV.Object.extend('Song')
+        // var songObject = new SongObject()
+        // songObject.set('name','1')
+        // var songObject1 = new SongObject()
+        // songObject1.set('name','2')
+        // let songs = [songObject,songObject1]
+        // AV.Object.saveAll(songs)
     </script>
 </body>
 </html>
