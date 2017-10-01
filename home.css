@@ -1,4 +1,6 @@
-/* red:#d43c33 */
+/*  red:#d43c33 
+    gray:#888
+*/
 
 body{
     font-size: 15px;
@@ -6,6 +8,17 @@ body{
 
 .page{
 
+}
+
+
+/* 公共title */
+.sectionTitle{
+    border-left: 2px solid #d43c33;
+    padding-left: 8px;
+    font-size: 17px;
+    /* 让字与横线对齐 */
+    line-height: 1;
+    margin: 20px 0 8px;
 }
 
 section.topbar{
@@ -68,21 +81,21 @@ section.topbar a::after{
     align-content: center;
 }
 
-.tabs li.active{
+.tabs > li.active{
     color: #d43c33;
 }
 
 /* 让文字与下划线产生联系 */
-.tabs li .text{
+.tabs > li .text{
     position: relative;
     top: 1px;
     padding: 10px 5px;
 }
 
-.tabs li.active .text{
+.tabs > li.active .text{
 }
 
-.tabs li.active .text::after{
+.tabs > li.active .text::after{
     content: '';
     position: absolute;
     left: 0;
@@ -107,14 +120,7 @@ section.playlists{
 
 }
 
-section.playlists h2{
-    border-left: 2px solid #d43c33;
-    padding-left: 8px;
-    font-size: 17px;
-    /* 让字与横线对齐 */
-    line-height: 1;
-    margin: 20px 0 8px;
-}
+
 
 section.playlists ol.songs{
     display: flex;    
@@ -123,12 +129,12 @@ section.playlists ol.songs{
     font-size: 13px;
 }
 
-section.playlists ol.songs li{
+section.playlists ol.songs > li{
     width: 32.8%;
     margin: 8px 0;
 }
 
-section.playlists ol.songs li p{
+section.playlists ol.songs > li p{
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp:2;
@@ -138,17 +144,88 @@ section.playlists ol.songs li p{
     padding: 0 6px;
 }
 
-section.playlists ol.songs li img{
+section.playlists ol.songs > li img{
     width: 100%;
 }
 
-section.songs{
 
+/*  */
+section.songs{
+    
 }
+
+section.songs .list > li h3{
+    font-size: 17px;
+}
+
+section.songs .list > li p{
+    font-size: 12px;
+    color: #888;
+}
+
+section.songs .list{
+    margin-top: 18px;
+}
+
+section.songs .list > li{
+    position: relative;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e2e3;
+}
+
+section.songs .list .playButton{
+    position: absolute;
+    top:50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+
+section.songs .list .icon-play{
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    fill: #aaa;
+}
+section.songs .list .icon-sq{
+    fill: #fe6723;
+}
+
+
+
 
 /* 其实是广告嘻嘻 */
 section.art{
+    background: transparent url(//i.loli.net/2017/10/01/59d0ee8f1906a.png) no-repeat center center;
+    background-size: cover;
+    padding-top: 38px;  
+    padding-bottom: 18px;
+    text-align: center; 
+}
 
+section.art svg{
+    width: 230px;
+    height: 44px;
+}
+
+section.art .link-wrapper > a{
+    display: inline-block;
+    border: 1px solid #d43c33;
+    color: #d43c33;
+    line-height: 38px;
+    font-size: 16px;
+    padding: 0 49px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+} 
+
+section.art .copyright{
+    font-size: 12px;
+    color: #888;
+    transform: scale(0.75);
 }
 
 
