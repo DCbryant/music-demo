@@ -10,6 +10,14 @@ body{
 
 }
 
+div.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+}
 
 /* 公共title */
 .sectionTitle{
@@ -105,6 +113,10 @@ section.topbar a::after{
     background-color: #d43c33;
 }
 
+.tab-content{
+    margin-top: 105px;
+}
+
 .tab-content > li{
     display: none;
 }
@@ -113,11 +125,19 @@ section.topbar a::after{
     display: block;
 }
 
+/* 边距合并，挡住边距合并 */
+.no-collapse::before{
+    content: '';
+    display: table;
+}
+.no-collapse::after{
+    content: '';
+    display: table;
+}
 
 
-
-section.playlists{
-
+section.playlists::before{
+    
 }
 
 
@@ -200,7 +220,7 @@ section.songs .list .icon-sq{
 section.art{
     background: transparent url(//i.loli.net/2017/10/01/59d0ee8f1906a.png) no-repeat center center;
     background-size: cover;
-    padding-top: 38px;  
+    padding-top: 63px;  
     padding-bottom: 18px;
     text-align: center; 
 }
