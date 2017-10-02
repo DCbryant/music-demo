@@ -127,9 +127,11 @@
         </ol>      
     </div>
 
+    <script src="./vendors/av-min.js"></script>
+    <script src="./scripts/av.js"></script>
     <script src="//at.alicdn.com/t/font_432965_3he0hj5jvjd4e7b9.js"></script>
     <script src="./vendors/jquery.slim.js"></script>
-    <script src="./vendors/av-min.js"></script>
+    
     <script>
         $('.tabs').on('click','li',function(e){
             let $li = $(e.currentTarget)
@@ -140,14 +142,6 @@
         })
     </script>
     <script>
-        var APP_ID = 'aPEGaeVtKbV9PJXee9cPawCW-gzGzoHsz';
-        var APP_KEY = 'jEvYXuleCCAXVAuV3NRAI9Fc';
-
-        AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-        });
-
         let $olSongs = $('ol#songs')
 
         // 查询保存的数据
@@ -209,7 +203,7 @@
                             let song = results[i].attributes
                             let id = results[i].id
                             let li = `
-                                <li data-id=${id}><a href="./home.html?id=${id}">${song.name}-${song.singer}</a></li>
+                                <li data-id=${id}><a href="./song.html?id=${id}">${song.name}-${song.singer}</a></li>
                             `
                             $('#searchResult').append(li)
                         }

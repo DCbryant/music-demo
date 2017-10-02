@@ -108,5 +108,63 @@
         <section class="lyric"></section>
         <section class="actions"></section>
     </div>
+
+    <script src="./vendors/av-min.js"></script>
+    <script src="./scripts/av.js"></script>
+    <script src="./vendors/jquery.slim.js"></script>
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        
+        let id = getParameterByName('id')       
+        // 获取对象
+        var query = new AV.Query('Song');
+        query.get(id).then(function (song) {
+            console.log(song)
+            let {url,lyric} = song.attributes
+            console.log(url)
+            var audio = document.createElement('audio')
+            
+            let array = []
+            let parts = lyric.split('\n')
+            parts.forEach(function(string,index) {
+                let lyricpart = string.split(']')
+                lyricpart[0] = lyricpart[0].substring(1)
+
+                var reg = /(\d+):([\d.]+)/
+                let matches = lyricpart[0].match(reg)
+                let min = +matches[1]
+                let sec = +matches[2]
+                array.push({
+                    time:min*60+sec,
+                    lyric:lyricpart[1]
+                })
+                
+            }, this);
+            console.log(array)
+            setInterval(function(){
+                let current = audio.currentTime
+                for(var i=0;i<array.length;i++){
+                    if(i === array.length - 1){
+                        console.log(array[i].lyric)
+                    }else if(array[i].time < current && array[i+1].time > current){
+                        console.log(array[i].lyric)
+                        break;
+                    }               
+                }
+            },500)
+
+            audio.src = url
+            audio.play()
+            audio.volume = 1
+        })
+    </script>
 </body>
 </html>
