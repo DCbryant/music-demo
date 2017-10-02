@@ -195,6 +195,7 @@
                 // 组合查询
                 var query = AV.Query.or(queryName,querySinger);
                 query.find().then(function (results) {
+                    console.log(results)
                     $('#searchResult').empty()
                     if(results.length === 0){
                         $('#searchResult').html('没有结果')

@@ -126,14 +126,14 @@
         let id = getParameterByName('id')       
         // 获取对象
         var query = new AV.Query('Song');
-        query.get(id).then(function (song) {
-            console.log(song)
+        var audio = document.createElement('audio')
+        query.get(id).then(function (song) {         
             let {url,lyric} = song.attributes
-            console.log(url)
-            var audio = document.createElement('audio')
             
+            console.log(lyric)
             let array = []
             let parts = lyric.split('\n')
+            console.log(1)
             parts.forEach(function(string,index) {
                 let lyricpart = string.split(']')
                 lyricpart[0] = lyricpart[0].substring(1)
@@ -148,7 +148,6 @@
                 })
                 
             }, this);
-            console.log(array)
             setInterval(function(){
                 let current = audio.currentTime
                 for(var i=0;i<array.length;i++){
@@ -160,10 +159,10 @@
                     }               
                 }
             },500)
-
+            
             audio.src = url
             audio.play()
-            audio.volume = 1
+            
         })
     </script>
 </body>
