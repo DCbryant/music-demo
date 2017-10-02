@@ -248,5 +248,11 @@ section.art .copyright{
     transform: scale(0.75);
 }
 
+li.page-3 input{
+    background-color: #ebecec;
+}
 
+ol#searchResult {
+    
+}
 
