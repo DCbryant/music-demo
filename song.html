@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        .page{
+            height: 100vh;
+            position: relative;
+        }
+        .page::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url(https://i.loli.net/2017/10/02/59d208ad36d45.jpg) no-repeat center;
+            background-size: cover;
+            /* 模糊 && 变暗 */
+            filter: blur(100px) brightness(0.2);
+        }
+        section.pointer{
+
+        }
+        section.disk{
+            
+            margin-top: 20px;
+        }
+        section.disk .circle{
+            width: 248px;
+            height: 248px;
+            position: relative;
+            margin: 0 auto;
+        }
+        section.disk .circle::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            background: transparent url(https://i.loli.net/2017/10/02/59d2201234325.png) no-repeat center;
+            background-size: cover;
+        }
+        section.disk .circle::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            background: transparent url(https://i.loli.net/2017/10/02/59d2238faf97a.png) no-repeat center;
+            background-size: cover;
+        }
+
+        section.disk .circle > img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -75px;
+            margin-top: -75px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        section.disk .circle.playing.pause > img,
+        section.disk .circle.playing.pause::after{
+            animation-play-state: paused;
+        }
+
+        section.disk .circle.playing > img,
+        section.disk .circle.playing::after{
+            animation: spin 5s linear infinite;
+        }
+
+        section.lyric{
+
+        }
+        section.actions{
+
+        }
+
+        @keyframes spin{
+            0%{
+                transform:  rotateZ(0deg);
+            }
+            100%{
+                transform:  rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="pointer"></section>
+        <section class="disk">
+            <div class="circle playing">
+                <img src="https://i.loli.net/2017/10/02/59d208ad36d45.jpg" width="150" height="150" alt="cover">
+            </div>
+        </section>
+        <section class="lyric"></section>
+        <section class="actions"></section>
+    </div>
+</body>
+</html>
