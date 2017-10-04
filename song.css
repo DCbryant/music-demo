@@ -1,0 +1,195 @@
+.page{
+    height: 100vh;
+    position: relative;
+}
+.page::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url(https://i.loli.net/2017/10/02/59d208ad36d45.jpg) no-repeat center;
+    background-size: cover;
+    /* 模糊 && 变暗 */
+    filter: blur(100px) brightness(0.2);
+}
+
+section.disk{          
+    padding-top: 70px;
+}
+section.disk .pointer{
+    position: absolute;
+    top: 0;
+    left:45%;
+    width: 96px;
+    z-index: 11;
+    /* height: 411px; */
+}
+section.disk .circle{
+    width: 296px;
+    height: 296px;
+    position: relative;
+    margin: 0 auto;
+}
+section.disk .circle::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: transparent url(https://i.loli.net/2017/10/02/59d2201234325.png) no-repeat center;
+    background-size: cover;
+}
+section.disk .circle::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: transparent url(https://i.loli.net/2017/10/02/59d2238faf97a.png) no-repeat center;
+    background-size: cover;
+}
+section.disk .circle > img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -75px;
+    border-radius: 50%;
+    border: none;
+}
+
+section.disk .circle.playing.pause > img,
+section.disk .circle.playing.pause::after{
+    animation-play-state: paused;
+}
+section.disk .circle.playing > img,
+section.disk .circle.playing::after{
+    animation: spin 5s linear infinite;
+}
+
+.play{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 11;
+}
+
+div.play svg{
+    width: 56px;
+    height: 56px;
+    fill: #fff;
+}
+
+div.play svg.play{
+    display: none;
+}
+
+section.song-description{
+    margin-top: 25px;
+    padding: 0 35px;
+    text-align: center;
+    color: #aeabac;
+    line-height: 1.5;
+    filter: brightness(1);
+}
+.song-description h2{
+    font-size: 18px;
+    color: #fff;
+}
+.song-description .lines{
+    transition: transform .3s;
+}
+.song-description .lyric{
+    font-size: 14px;
+    height: 88px;
+    overflow: hidden;
+}
+.song-description p{
+    line-height: 24px;
+    padding-bottom: 8px;
+}
+.song-description p.active{
+    color: #fff;
+}
+section.actions{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    padding: 0 35px;
+}
+
+section.actions .btn{
+    display: inline-block;
+    vertical-align: middle;
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    padding: 0 6px;
+    border-radius: 4px;
+    width: 140px;
+    text-align: center;
+}
+section.actions .open{
+    border: 1px solid #d43b32;
+    color: #d43b32;
+    margin-left: 6px;
+}
+
+section.actions .download{
+    margin-left: 12px;
+    color: #fff;
+    background-color: #d43b32;
+    border-color: #d43b32;
+}
+
+
+@keyframes spin{
+    0%{
+        transform:  rotateZ(0deg);
+    }
+    100%{
+        transform:  rotate(360deg);
+    }
+}
+
+/* iphone5 */
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    section.disk .circle{
+        width: 248px;
+        height: 248px;
+    }
+    .play svg{
+        width: 50px;
+        height: 50px;
+        fill: #fff;
+    }
+}
+
+/* iphone6 */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+    section.disk .circle{
+        width: 296px;
+        height: 296px;
+    }
+    .play svg{
+        width: 56px;
+        height: 56px;
+        fill: #fff;
+    }
+}
