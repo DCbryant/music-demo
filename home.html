@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./vendors/loaders.min.css">
 </head>
 <body>
-    <div class="page">
+    <ul class="page">
         <div class="sticky">
             <section class="topbar">
                 <div class="logo">
@@ -119,9 +119,30 @@
              </li>
              <li class="page-2">page2</li>
              <li class="page-3">
-                 <input id="search" type="text">
+                 <form action="#" method="get">
+                    <div class="inputcover">
+                        <svg class="icon search" aria-hidden="true">
+                            <use xlink:href="#icon-search"></use>
+                        </svg>
+                        <input id="search" type="text" placeholder="搜索歌曲、歌手、专辑">
+                    </div>
+                 </form>
+                 <section class="hot-search">
+                     <h3>热门搜索</h3>
+                    <ul class="list">
+                        <!-- <li><a href="javascript:void(0);">黑色毛衣</a></li>
+                        <li><a href="javascript:void(0);">stay</a></li>
+                        <li><a href="javascript:void(0);">Send It</a></li>
+                        <li><a href="javascript:void(0);">Going Strong</a></li>
+                        <li><a href="javascript:void(0);">天空之城</a></li>
+                        <li><a href="javascript:void(0);">把耳朵叫醒</a></li>
+                        <li><a href="javascript:void(0);">DEAR JOHN</a></li>
+                        <li><a href="javascript:void(0);">可惜没如果</a></li>
+                        <li><a href="javascript:void(0);">Something Just Like This</a></li>
+                        <li><a href="javascript:void(0);">似曾</a></li> -->
+                    </ul>
+                 </section>
                  <ol id="searchResult">
-
                  </ol>
              </li>
         </ol>      
@@ -129,7 +150,7 @@
 
     <script src="./vendors/av-min.js"></script>
     <script src="./scripts/av.js"></script>
-    <script src="//at.alicdn.com/t/font_432965_3he0hj5jvjd4e7b9.js"></script>
+    <script src="//at.alicdn.com/t/font_432965_wgctks0x0d1v2t9.js"></script>
     <script src="./vendors/jquery.slim.js"></script>
     
     <script>
@@ -143,15 +164,16 @@
     </script>
     <script>
         let $olSongs = $('ol#songs')
-
+        let $hotSearch = $('.hot-search .list')
         // 查询保存的数据
         var query = new AV.Query('Song')
         query.find().then(function (results) {
             $('#songs-loading').remove()
             for(var i=0;i<results.length;i++){
                 let song = results[i].attributes
+                let id = results[i].id
                 let li = `
-                        <li>
+                        <li data-id=${id}>
                             <h3>${song.name}</h3>
                             <p>
                                 <svg class="icon icon-sq" aria-hidden="true">
@@ -159,7 +181,8 @@
                                 </svg>
                                 ${song.singer} - ${song.name}
                             </p>
-                            <a href="#" class="playButton">
+                            
+                            <a href="./song.html?id=${id}" class="playButton">
                                 <svg class="icon icon-play" aria-hidden="true">
                                     <use xlink:href="#icon-play"></use>
                                 </svg>
@@ -167,10 +190,27 @@
                         </li>                
                 `
                 $olSongs.append(li)
+
+                let hotLi = `<li data-id=${id}><a href="javascript:void(0);">${song.name}</a></li>`                
+                $hotSearch.append(hotLi)
+                
             }
         }, function (error) {
             console.log('获取数据失败')
         });
+
+        $olSongs.on('click','li',function(e){
+            let $targetLi = $(e.currentTarget)
+            let id = $targetLi.attr('data-id')
+            window.location.href = `./song.html?id=${id}`
+        })
+
+        // 点击搜索词
+        $('.hot-search .list').on('click','li',function(e){
+            let $targetLi = $(e.currentTarget)
+            let id = $targetLi.attr('data-id')
+            window.location.href = `./song.html?id=${id}`
+        })
 
         let timer = null
 
@@ -203,8 +243,16 @@
                         for(var i=0;i<results.length;i++){
                             let song = results[i].attributes
                             let id = results[i].id
+                            // let li = `
+                            //     <li data-id=${id}><a href="./song.html?id=${id}">${song.name}-${song.singer}</a></li>
+                            // `
                             let li = `
-                                <li data-id=${id}><a href="./song.html?id=${id}">${song.name}-${song.singer}</a></li>
+                                <li data-id=${id} class="search-item">
+                                    <svg class="icon search" aria-hidden="true">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                    <a href="./song.html?id=${id}">${song.name}</a>
+                                </li>
                             `
                             $('#searchResult').append(li)
                         }
