@@ -215,6 +215,132 @@ section.songs .list .icon-sq{
 
 
 
+section.hottop{
+    background: transparent url(http://s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat center;
+    background-size: contain;
+    min-height: 146px;
+    filter: brightness(.8);
+}
+
+section.hottop::before{
+    content: '';
+    display: table;
+}
+
+.hot-pic{
+    padding-left: 20px;
+}
+
+.hot-wrapper{
+    margin-top: 30px;
+    background: url(http://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+    background-size: 166px 97px;
+    width: 142px;
+    height: 67px;
+    background-position: -24px -30px;
+}
+
+.hot-time{
+    margin-top: 10px;
+    color: hsla(0,0%,100%,.8);
+    font-size: 12px;
+}
+
+section.hot-playlists .hot-list > li{
+    position: relative;
+}
+
+section.hot-playlists .hot-list > li::before{
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: -28px;
+    width: 28px;
+    font-size: 17px;
+}
+
+section.hot-playlists .hot-list > li:nth-child(1)::before{
+    content: '01';
+}
+section.hot-playlists .hot-list > li:nth-child(2)::before{
+    content: '02';
+}
+
+section.hot-playlists .hot-list > li:nth-child(3)::before{
+    content: '03';
+}
+section.hot-playlists .hot-list > li:nth-child(4)::before{
+    content: '04';
+}
+section.hot-playlists .hot-list > li:nth-child(5)::before{
+    content: '05';
+}
+section.hot-playlists .hot-list > li:nth-child(6)::before{
+    content: '06';
+}
+
+section.hot-playlists .hot-list > li:nth-child(7)::before{
+    content: '07';
+}
+section.hot-playlists .hot-list > li:nth-child(8)::before{
+    content: '08';
+}
+section.hot-playlists .hot-list > li:nth-child(9)::before{
+    content: '09';
+}
+section.hot-playlists .hot-list > li:nth-child(10)::before{
+    content: '10';
+}
+
+section.hot-playlists .hot-list > li:nth-child(-n+3)::before{
+    color: #df3436;
+}
+
+section.hot-playlists .hot-list > li h3{
+    font-size: 17px;
+}
+
+section.hot-playlists .hot-list > li p{
+    font-size: 12px;
+    color: #888;
+}
+
+section.hot-playlists .hot-list > li{
+    position: relative;
+    margin-left: 38px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e2e3;
+}
+
+section.hot-playlists .hot-list .playButton{
+    position: absolute;
+    top:50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+
+section.hot-playlists .hot-list  svg.icon-play{
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    fill: #aaa;
+}
+section.hot-playlists .hot-list svg.icon-sq{
+    fill: #fe6723;
+}
+
+.hot-btn{
+    display: block;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #333;
+}
+
+
+
 
 /* 其实是广告嘻嘻 */
 section.art{
